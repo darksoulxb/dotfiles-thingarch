@@ -1,0 +1,25 @@
+# secrets — never commit these
+**/credentials
+**/secrets
+**/.env
+*token*
+*password*
+*secret*
+
+# cache junk
+**/__pycache__/
+**/*.pyc
+**/.cache/
+**/cache/
+**/.local/share/recently-used.xbel
+
+# large media
+*.mp4
+*.mkv
+*.iso
+*.tar.gz
+*.zip
+*.png
+*.jpg
+*.jpeg
+*.gif

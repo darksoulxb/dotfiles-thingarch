@@ -1,0 +1,59 @@
+ss
+s
+s### MONITORS ###
+monitor = eDP-1, 1920x1080@60, 0x0, 1
+
+### MY PROGRAMS ###
+$terminal = kitty
+$fileManager = nautilus
+$menu = rofi -show drun
+
+### AUTOSTART ###
+exec-once = nm-applet
+exec-once = swww-daemon
+exec-once = blueman-applet
+exec-once = swaync
+exec-once = systemctl --user start hyprpolkitagent
+exec-once = hypridle
+exec-once = waybar -c ~/.config/waybar/configs/taskbar -s ~/.config/waybar/style/bintang_default.css
+
+### ENVIRONMENT VARIABLES ###
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+env = LANG,en_US.UTF-8
+env = LC_ALL,en_US.UTF-8
+
+### LOOK AND FEEL ###
+source = ~/.config/hypr/user-colors.conf
+source = ~/.config/hypr/configs/looknfeel.conf
+
+### LAYOUTS ###
+dwindle {
+    pseudotile = true
+    preserve_split = true
+}
+
+master {
+    new_status = master
+}
+
+misc {
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+    vfr = true
+}
+
+render {
+    new_render_scheduling = true
+}
+
+### INPUT & KEYBINDS ###
+source = ~/.config/hypr/configs/input.conf
+source = ~/.config/hypr/configs/keybinds.conf
+source = ~/.config/hypr/configs/autostart.conf
+
+### BTOP WIN+R BIND ###
+bind = SUPER, R, exec, kitty --class btop_float -e btop
+windowrulev2 = float, class:^(btop_float)$
+windowrulev2 = size 1000 650, class:^(btop_float)$
+windowrulev2 = center, class:^(btop_float)$

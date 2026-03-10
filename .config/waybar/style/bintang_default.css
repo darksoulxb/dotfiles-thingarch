@@ -1,0 +1,30 @@
+@import "../../gtk-3.0/colors.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: alpha(@surface_color, 0.7);
+    border: 2px solid @accent_color;
+    border-radius: 15px;
+    margin: 10px 20px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: @text_color;
+}
+
+#workspaces button.active {
+    color: @accent_color;
+    background: alpha(@accent_color, 0.2);
+    border-radius: 10px;
+}
+
+#clock, #battery, #tray, #group-audio, #custom-power {
+    padding: 0 10px;
+    color: @text_color;
+}

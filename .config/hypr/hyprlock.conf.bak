@@ -1,0 +1,142 @@
+source = ~/.config/hypr/colors.conf
+
+general {
+    grace = 1
+    fractional_scaling = 2
+    immediate_render = true
+    hide_cursor = true
+}
+
+# ── Background — your wallpaper, heavily blurred & dimmed ─────────
+background {
+    monitor =
+    path = ~/.config/hypr/current_wallpaper
+
+    color = rgb(0,0,0)
+
+    blur_size = 8
+    blur_passes = 5
+    noise = 0.008
+    contrast = 1.0
+    brightness = 0.45
+    vibrancy = 0.15
+    vibrancy_darkness = 0.0
+}
+
+# ── Frosted glass card behind the clock ───────────────────────────
+shape {
+    monitor =
+    size = 380, 220
+    color = rgba(f0dfd808)
+    rounding = 28
+    border_size = 1
+    border_color = rgba(f0dfd818)
+    position = 0, 80
+    halign = center
+    valign = center
+    shadow_passes = 3
+    shadow_size = 20
+    shadow_color = rgba(00000055)
+    shadow_boost = 1.2
+}
+
+# ── Time — single line HH:MM ──────────────────────────────────────
+label {
+    monitor =
+    text = cmd[update:1000] echo "$(date +"%H:%M")"
+    color = rgba(f0dfd8f0)
+    font_size = 86
+    font_family = Inter Bold
+    shadow_passes = 1
+    shadow_size = 6
+    shadow_color = rgba(00000055)
+    position = 0, 100
+    halign = center
+    valign = center
+}
+
+# ── Day of week ───────────────────────────────────────────────────
+label {
+    monitor =
+    text = cmd[update:60000] echo "$(date +'%A')"
+    color = rgba(f0dfd8bb)
+    font_size = 15
+    font_family = Inter Medium
+    position = 0, 28
+    halign = center
+    valign = center
+}
+
+# ── Date  ─────────────────────────────────────────────────────────
+label {
+    monitor =
+    text = cmd[update:60000] echo "$(date +'%B %-d, %Y')"
+    color = rgba(f0dfd877)
+    font_size = 13
+    font_family = Inter
+    position = 0, 8
+    halign = center
+    valign = center
+}
+
+# ── Frosted glass card behind input ───────────────────────────────
+shape {
+    monitor =
+    size = 320, 72
+    color = rgba(f0dfd806)
+    rounding = 22
+    border_size = 1
+    border_color = rgba(ffb68f22)
+    position = 0, 148
+    halign = center
+    valign = bottom
+    shadow_passes = 2
+    shadow_size = 12
+    shadow_color = rgba(00000044)
+}
+
+# ── Password input ────────────────────────────────────────────────
+input-field {
+    monitor =
+    size = 300, 52
+
+    outline_thickness = 0
+
+    dots_size = 0.22
+    dots_spacing = 0.55
+    dots_center = true
+    dots_rounding = -1
+
+    rounding = 18
+    outer_color = rgba(00000000)
+    inner_color = rgba(f0dfd80a)
+    font_color = rgba(f0dfd8ee)
+    font_family = Inter
+
+    fade_on_empty = true
+    fade_timeout = 1200
+    placeholder_text = <span foreground="##f0dfd855"><i>Enter password</i></span>
+
+    fail_color = rgba(ffb4ab99)
+    fail_text = <i>$ATTEMPTS remaining</i>
+    fail_transition = 300
+
+    capslock_color = rgba(cec89199)
+    numlock_color = rgba(cec89199)
+
+    position = 0, 148
+    halign = center
+    valign = bottom
+}
+
+# ── User greeting ─────────────────────────────────────────────────
+label {
+    monitor =
+    text = cmd[update:0] echo "Hey, $(echo $USER | sed 's/.*/\u&/')."
+    color = rgba(f0dfd866)
+    font_size = 13
+    font_family = Inter
+    position = 0, 212
+    halign = center
+    valign = bottom
+}

@@ -1,0 +1,112 @@
+### MONITORS ###
+monitor = eDP-1, 1920x1080@60, 0x0, 1
+
+### MY PROGRAMS ###
+$terminal = kitty
+$fileManager = nautilus
+$menu = rofi -show drun
+
+### ENVIRONMENT VARIABLES ###
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+env = LANG,en_US.UTF-8
+env = LC_ALL,en_US.UTF-8
+
+### LOOK AND FEEL ###
+source = ~/.config/hypr/user-colors.conf
+source = ~/.config/hypr/configs/looknfeel.conf
+
+### LAYOUTS ###
+dwindle {
+    pseudotile = true
+    preserve_split = true
+}
+master {
+    new_status = master
+}
+misc {
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+    vfr = true
+}
+render {
+    new_render_scheduling = true
+}
+
+### INPUT & KEYBINDS ###
+source = ~/.config/hypr/configs/input.conf
+source = ~/.config/hypr/configs/keybinds.conf
+
+### AUTOSTART ###
+source = ~/.config/hypr/configs/autostart.conf
+
+### BTOP WIN+R BIND ###
+
+
+### BTOP WIN+R BIND ###
+bind = SUPER, R, exec, kitty --class btop_float -e btop
+# windowrule = float, ^(btop_float)$
+# windowrule = size 1000 650, ^(btop_float)$
+# windowrule = center, ^(btop_float)$
+
+### COPILOT BUTTON -> KITTY ###
+
+
+plugin:liquid-glass {
+    blur_strength = 2.5
+    refraction_strength = 0.15
+    chromatic_aberration = 0.02
+    fresnel_strength = 0.5
+    specular_strength = 0.4
+}
+
+plugin {
+    hyprtrails {
+        color = rgba(00000000)    # Make the trail invisible
+        width = 0                 # Zero thickness
+        history_points = 0        # Don't remember previous positions
+    }
+}
+general {
+    border_size = 1
+    # iOS "Liquid" Edge: Bright white glint transitioning to transparent grey
+    col.active_border = rgba(ffffffcc) rgba(9ca3af22) 45deg
+    col.inactive_border = rgba(1f293711)
+
+    gaps_in = 4     # Tight, iOS-style spacing
+    gaps_out = 8    # Minimal gap to maximize screen real estate
+}
+
+decoration {
+    rounding = 14    # Smooth but not "circular"
+    
+    blur {
+        enabled = true
+        size = 12           # Thick glass feel
+        passes = 6          # High quality for your hardware
+        new_optimizations = true
+        
+        # Frosty Grey Math
+        brightness = 1.1    # Subtle lift
+        contrast = 1.1      # Keeps it crisp
+        vibrancy = 0.0      # <--- THIS kills the purple
+        noise = 0.02        # Subtle "frosted" grain
+    }
+
+    shadow {
+        enabled = true
+        range = 25
+        render_power = 4
+        color = rgba(00000066)
+    }
+}
+
+### WINDOW RULES ###
+# This handles the "Darkish Grey" when focused and "Glassy" when inactive
+windowrule = opacity 0.95 0.85, match:class kitty
+
+# Rules for your floating btop (Uncommented and fixed)
+windowrule = float on, match:class btop_float
+windowrule = size 1000 650, match:class btop_float
+windowrule = center on, match:class btop_float
+windowrule = opacity 1.0 0.8, match:class (kitty|btop_float)
